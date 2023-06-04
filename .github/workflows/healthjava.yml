@@ -1,0 +1,32 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main  # 또는 기타 원하는 브랜치
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Java
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+
+    - name: Build with Maven
+      run: mvn clean package
+
+    - name: Deploy to Server
+      uses: appleboy/scp-action@master
+      with:
+        host: localhost
+        username: HealthJava
+        key: ${{ secrets.SSH_PRIVATE_KEY }}  # 깃허브 Secrets에 등록한 개인 키
+        source: target/HealthJava.jar  # 빌드된 JAR 파일 경로
+        target: /path/to/destination/  # 서버에서 JAR 파일을 저장할 경로
+        script: nohup java -jar -Dserver.port=8282 /path/to/destination/HealthJava.jar > log.txt &  # JAR 파일 실행 스크립트

@@ -1,0 +1,52 @@
+@charset "UTF-8";
+/* admin계정 UI */
+
+/* 관리자 메인이미지  */
+.adminMainpage {
+	width: 1400px;
+	height: 300px;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.profile_img {
+	width: 1400px;
+	height: 200px;
+	padding-left: 50px;
+	padding-right: 100px;
+	background-color: #fc9300;
+}
+
+/*Admin Page 지정*/
+.name {
+	padding-top: 30px;
+	padding-left: 10px;
+	padding-right: 1000px;
+	font-family: 'KIMM_Bold';
+}
+
+.myinfo {
+	padding-left: 170px;
+	padding-right: 100px;
+	font-family: 'KIMM_Bold';
+	color: white;
+}
+
+.myinfo_date {
+	padding-left: 170px;
+	padding-right: 100px;
+	font-family: 'KIMM_Bold';
+	color: white;
+}
+
+.meau {
+	padding-top: 30px;
+	padding-left: 800px;
+	font-family: 'KIMM_Bold';
+}
+
+.meau a {
+	color: white;
+	text-decoration: none;
+}

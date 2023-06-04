@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="cs">
+
+  <!-- CS Notice --><!-- CS Notice --><!-- CS Notice --><!-- CS Notice --><!-- CS Notice --><!-- CS Notice --><!-- CS Notice -->
+  <!-- ============================================================================================== -->
+    
+    <!-- 공지사항 글 개수 조회 -->
+    <select id="notice_count" resultType="int" parameterType="csNotice">
+     select count(notice_no) from tbl_notice
+    </select>  
+ 
+	<!-- 공지사항 목록 조회-->
+  <select id="notice_list" parameterType="java.util.Map" resultType="csNotice">
+    select * from (
+      select rowNum rnum, notice_no, notice_title, notice_cont, notice_date
+      from (
+        select * from tbl_notice
+        <where>
+          <if test="search_type == null">
+          </if>
+          <if test="search_type == 'notice_title'">
+            and notice_title like '%' || #{search_field} || '%'
+          </if>
+          <if test="search_type == 'notice_cont'">
+            and notice_cont like '%' || #{search_field} || '%'
+          </if>
+        </where>
+        order by notice_no asc
+      )
+    ) <![CDATA[where rNum>= #{startrow} and rNum<=#{endrow}]]>
+  </select>
+   <!--  <select id="notice_list" resultType="csNotice">
+     	
+    select * from (select rowNum rnum, notice_no, notice_title, notice_cont, notice_date from 
+    (select * from tbl_notice 
+ 	<where>
+ 	   
+	<if test="search_type == null"></if>
+
+	<if test="search_type == 'notice_title'">
+	and notice_title like #{search_field}
+	</if>
+	
+	<if test="search_type == 'notice_cont'">
+	and notice_cont like #{search_field}
+	</if>  
+	</where>
+   
+	order by notice_no asc)) <![CDATA[where rNum>= #{startrow} and rNum<=#{endrow}]]>
+	
+	</select>	 -->
+	
+	<insert id="notice_write">
+	insert into tbl_notice values(notice_no_seq.nextval, #{notice_title}, #{notice_cont}, sysdate)
+	</insert>
+ 
+  <!-- CS FAQ --><!-- CS FAQ --><!-- CS FAQ --><!-- CS FAQ --><!-- CS FAQ --><!-- CS FAQ --><!-- CS FAQ --><!-- CS FAQ -->
+  <!-- ============================================================================================== -->	
+  	
+  	<!-- FAQ 목록 조회 -->
+  	<select id="faq_list" resultType="csFAQ">
+  	select * from tbl_faq
+  	 
+	<if test="faq_category == null">
+	order by faq_no asc
+	</if>
+	<where>
+	<if test="faq_category != null">
+	faq_category = #{faq_category} order by faq_no asc
+	</if>
+	</where>
+
+  	</select>
+  	
+  	<!-- FAQ 글 작성 -->
+  	<insert id="faq_write">
+  	insert into tbl_faq values(faq_no_seq.nextval, #{faq_category}, #{faq_title}, #{faq_cont})
+  	</insert>
+  	
+  <!-- CS Contact --><!-- CS Contact --><!-- CS Contact --><!-- CS Contact --><!-- CS Contact --><!-- CS Contact -->
+  <!-- ============================================================================================== -->	
+  	
+  	<!-- 1대1 문의글 목록 조회 -->
+  	<select id="contact_list" resultType="csClient">
+     select * from tbl_client order by client_no asc
+    </select>  
+    
+    <!-- 1대1 문의글 내용보기 -->
+  	<select id="contact_cont" resultType="csClient">
+  	select * from tbl_client where client_no = #{client_no}
+  	</select>
+    
+     <!-- 1대1 문의글 작성 -->
+  	<insert id="contact_write">
+  	insert into tbl_client 
+  	(client_no, client_title, client_cont, client_category, client_date ,user_id, contact_password) 
+  	values(client_no_seq.nextval, #{client_title}, #{client_cont}, #{client_category}, sysdate, #{user_id}, #{contact_password})
+  	</insert>
+  	
+
+  	
+  </mapper>

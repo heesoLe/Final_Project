@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+<style type="text/css">
+	/* 폰트 CSS */
+	@font-face {
+		font-family: 'KIMM_Bold';
+		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2'); /* CDN 절대링크  */
+		font-weight: 700;
+		font-style: normal;
+	}
+	/* 되도록 안건드리는 영역 */
+	* {
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+	}
+	html {
+		height: 100%;
+	}
+	body {
+		margin: 0px;
+		height: 100%;
+		padding: 0px;
+	}
+	header {
+		width: 100%;
+	    position: fixed;
+		z-index: 2;
+	}
+	footer {
+		bottom: 0;
+		z-index: 5;
+		position: relative;
+	}
+	.wrap {
+		margin-top: -110px;
+		min-height: 100%;
+	    position: relative;
+	}
+	.main { 
+		width: 1400px;
+		height: 2000px; /* UI 개발할 때 각 페이지에 맡게 해당 영역 px수치 수정해야함 / section이랑 px 맞춰야함 */
+		position : relative;
+		top: 105px;
+		left: 50%;
+        transform: translateX( -50% );
+		
+	}
+	section {
+		height: 2000px; /* UI 개발할 때 각 페이지에 맡게 해당 영역 px수치 수정해야함 / .main이랑 px 맞춰야함 */
+		
+	}
+	/* 클리어 */
+	.clear {
+		clear: both;
+	}
+	/* 밑의 영역부터 css시작 */
+	.container {
+		width: 100%;
+	}
+	
+	
+	/*본문 css 시작*/
+
+	/* 관리자 프로필 계정 NOTOCH */
+	#adminMainpage {
+		width: 1100x;
+		height: 300px;
+		position : relative;
+		left: 50%;
+        transform: translateX( -50% );
+	}
+	.profile_img{
+		width: 1400px;
+		height: 200px;
+		padding-left: 50px; 
+		padding-right: 100px;
+	}
+	.name{ /*Admin Page 지정*/
+		padding-top: 30px;
+		padding-left: 10px; 
+		padding-right: 1000px;
+		font-family: 'KIMM_Bold';
+	}
+	.myinfo {		
+	  	padding-left: 300px;
+	  	padding-right: 100px;
+	  	font-family: 'KIMM_Bold';
+	 }
+	.myinfo_date{
+		padding-left: 300px;
+	  	padding-right: 100px;
+	  	font-family: 'KIMM_Bold';
+	}
+	.location {
+		padding-top: 30px;
+		padding-left: 800px;
+		font-family: 'KIMM_Bold';
+	}
+	/* 상품 등록 전체 폼*/
+	.productTitle{
+		width: 1400px;
+		height: 180px;
+		padding-top: 100px;
+		padding-left: 50px; 
+		padding-right: 100px;
+		font-family: 'KIMM_Bold';
+	}
+	.productForm{
+		font-family: 'KIMM_Bold';
+		width: 1300px; 
+		height: 1100px;
+		border:none;   
+	    border-top: 5px solid #FC5400;
+	    border-bottom: 5px solid #FC5400;
+	}
+	.table_div table {
+		border-collapse: collapse;
+	}
+	.table_div table th, td {
+		text-align: centen;
+		font-family: 'KIMM_Bold';
+		border-bottom: 1px solid black;
+	}
+	.input{
+		font-family: 'KIMM_Bold';
+	}
+</style>

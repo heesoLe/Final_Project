@@ -1,0 +1,26 @@
+@charset "UTF-8";
+/* adminMemList.jsp UI : 회원 관리 */
+/* 회원관리 게시판 전체 틀 */
+.list {
+	width: 1400px;
+	height: 80px;
+	padding-top: 50px;
+	padding-left: 50px;
+	padding-right: 100px;
+	font-family: 'KIMM_Bold';
+}
+/* 게시판 테두리 */
+.boardList {
+	border: none;
+	width: 1300px;
+	height: 250px;
+	border-top: 2px solid #FC5400;
+	border-bottom: 2px solid #FC5400;
+	font-family: 'KIMM_Bold';
+}
+.boardList th {
+	border-bottom: 1px solid #f5ad56;
+}
+.boardList tr {
+	border-bottom: 1px solid #f5ad56;
+}

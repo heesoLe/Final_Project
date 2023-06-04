@@ -1,0 +1,773 @@
+@charset "UTF-8";
+
+<style type="text/css">
+	/* 폰트 CSS */
+	@font-face {
+		font-family: 'KIMM_Bold';
+		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2'); /* CDN 절대링크  */
+		font-weight: 700;
+		font-style: normal;
+	}
+	/* 되도록 안건드리는 영역 */
+	* {
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+	}
+	html {
+		height: 100%;
+	}
+	body {
+		margin: 0px;
+		height: 100%;
+		padding: 0px;
+	}
+	header {
+		width: 100%;
+	    position: fixed;
+		z-index: 2;
+	}
+	footer {
+		bottom: 0;
+		z-index: 5;
+		position: relative;
+	}
+	.wrap {
+		margin-top: -110px;
+		min-height: 100%;
+	    position: relative;
+	}
+	.main { 
+		width: 1400px;
+		height: 2000px; /* UI 개발할 때 각 페이지에 맡게 해당 영역 px수치 수정해야함 / section이랑 px 맞춰야함 */
+		position : relative;
+		top: 105px;
+		left: 50%;
+        transform: translateX( -50% );
+		
+	}
+	section {
+		height: 2000px; /* UI 개발할 때 각 페이지에 맡게 해당 영역 px수치 수정해야함 / .main이랑 px 맞춰야함 */
+		
+	}
+	/* 클리어 */
+	.clear {
+		clear: both;
+	}
+	/* 밑의 영역부터 css시작 */
+	.container {
+		width: 100%;
+	}
+	
+	
+	/*본문 css 시작*/
+	
+	img {
+	  	max-width: 100%;
+	}
+	.product_item{
+	font-family: 'KIMM_Bold';
+	}
+	
+.product_kind{
+	font: 0.75em;
+    color: #353535;
+    font-family: 'KIMM_Bold';
+    padding: 30px;
+    min-height: 30px;
+    text-align: center;
+    margin: 0 0;
+}
+
+.menuCategory{
+    font: 0.75em;
+    color: #353535;
+    font-family: 'KIMM_Bold';
+    margin: 0;
+    padding: 0;
+    display: table;
+    width: 100%;
+    padding-bottom: 90px;
+    font-size: 0;
+    line-height: 0;
+    border: 0;
+    position: relative;
+    text-align: center;
+
+}
+
+.menuCategory>li {
+    font: 0.75em;
+    color: #353535;
+    list-style: none;
+    display: inline-block;
+    width: 20%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 15px;
+    line-height: 1;
+    vertical-align: top;
+    font-family: 'KIMM_Bold';
+    
+    
+    
+    
+}
+
+.menuCategory>li>ul{
+    font: 0.75em;
+    color: #353535;
+    list-style: none;
+    font-size: 15px;
+    line-height: 1;
+    font-family: 'KIMM_Bold';
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    white-space: nowrap;
+    margin: 0 0 0 -20px;
+    padding: 28px 0;
+    z-index: 1;
+}
+
+
+.menuCategory>li>ul>li{
+    font: 0.75em;
+    color: #353535;
+    font-size: 15px;
+    font-family: 'KIMM_Bold';
+    white-space: nowrap;
+    padding: 0;
+    list-style: none;
+    margin: 0 0;
+    line-height: 14px;
+    display: inline-block;
+}
+
+.menuCategory>li>ul>li>a{
+    font: 0.75em;
+    font-family: 'KIMM_Bold';
+    white-space: nowrap;
+    list-style: none;
+    text-decoration: none;
+    color: #000000;
+    font-size: 13px;
+    line-height: 1.4;
+    display: inline-block;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 20px;
+    padding: 4px 13px;
+    margin: 0 0 0 20px;
+    
+    
+    
+}
+
+.menuCategory>li>ul>li>div{
+    font: 0.75em;
+    color: #353535;
+    font-size: 15px;
+    font-family: 'KIMM_Bold';
+    white-space: nowrap;
+    list-style: none;
+    line-height: 14px;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+    width: auto;
+    height: auto;
+    margin: 0;
+    vertical-align: top;
+}
+
+
+.menuCategory>li>a{
+    font: 0.75em;
+    list-style: none;
+    font-size: 15px;
+    font-family: 'KIMM_Bold';
+    text-decoration: none;
+    display: block;
+    padding: 0 5px;
+    height: 52px;
+    line-height: 49px;
+    border: 1px solid #eeeeee;
+    font-weight: 400;
+    color: #777777;
+    background: none;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+    text-align: center;
+    position: relative;
+    border-top: 1px solid #eeeeee;
+}
+
+.menuCategory>li :hover{
+	border-bottom: 5px solid black;
+}
+
+.menuCategory>li>a>span{
+    font: 0.75em;
+    list-style: none;
+    font-size: 15px;
+    font-family: 'KIMM_Bold';
+    line-height: 49px;
+    color: #777777;
+    white-space: nowrap;
+    text-align: center;
+    display: none !important;
+    font-weight: normal;
+}
+
+
+
+
+
+.function{
+    font: 0.75em;
+    color: #353535;
+    font-family: 'KIMM_Bold';
+    padding: 0;
+    overflow: hidden;
+    margin: 20px 0 0;
+    text-align: right;
+    line-height: 38px;
+    border: 0;
+}
+
+.function>p{
+    font: 0.75em;
+    font-family: 'KIMM_Bold';
+    text-align: right;
+    line-height: 38px;
+    margin: 0;
+    float: left;
+    padding: 0 0 0 8px;
+    color: #333333;
+    display: none;
+}
+
+.function>ul{
+    font: 0.75em ;
+    color: #353535;
+    font-family: 'KIMM_Bold';
+    text-align: right;
+    line-height: 38px;
+    padding: 0;
+    display: inline;
+    margin: 0 4px 0 0;
+}
+
+
+.function>ul>li{
+    font: 0.75em;
+    color: #353535;
+    font-family: 'KIMM_Bold';
+    line-height: 38px;
+    margin: 0;
+    list-style: none;
+    display: inline;
+    padding: 0 0 0 10px;
+    position: relative;
+    background: none;
+}
+
+.function>ul>li :hover{
+	border-bottom: 3px solid black;
+}
+
+.function>ul>li>a{
+    font: 0.75em;
+    line-height: 38px;
+    list-style: none;
+    text-decoration: none;
+    color: #b3b3b3;
+    font-size: 13px;
+    font-family: 'KIMM_Bold';
+}
+
+
+.function>span{
+    font: 0.75em;
+    color: #353535;
+    font-family: 'KIMM_Bold';
+    text-align: right;
+    line-height: 38px;
+    display: none !important;
+}
+
+
+
+.function>span>a{
+    font: 0.75em;
+    text-align: right;
+    line-height: 38px;
+    text-decoration: none;
+    font-family: 'KIMM_Bold';
+    display: inline-block;
+    padding: 0 12px;
+    color: #a28c90;
+    font-size: 18px;
+    border-left: 0;
+}
+
+
+
+
+
+/*맨 아래 페이지 숫자 부분 css*/
+
+.pagenumber{
+    font: 0.75em;
+    color: #353535;
+    font-family: 'KIMM_Bold';
+    padding: 0;
+    margin: 30px 0;
+    text-align: center;
+    font-size: 0;
+    line-height: 0;
+
+}
+
+.first{
+    font: 0.75em;
+    font-family: 'KIMM_Bold';
+    text-align: center;
+    font-size: 0;
+    line-height: 0;
+    color: #000;
+    text-decoration: none;
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    vertical-align: top;
+    background: url("/SkinImg/btn_page_first.gif") no-repeat;
+    
+    
+}
+
+.pagenumber>a{
+    font: 0.75em;
+    font-family: 'KIMM_Bold';
+    text-align: center;
+    font-size: 0;
+    line-height: 0;
+    color: #000;
+    text-decoration: none;
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    vertical-align: top;
+    background: url("/SkinImg/btn_page_prev.gif") no-repeat;
+    
+    
+}
+
+.last{
+    font: 0.75em;
+    font-family: 'KIMM_Bold';
+    text-align: center;
+    font-size: 0;
+    line-height: 0;
+    color: #000;
+    text-decoration: none;
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    vertical-align: top;
+    background: url("/SkinImg/btn_page_last.gif") no-repeat;
+    
+    
+}
+
+.pagenumber>a>img{
+    font: 0.75em;
+    font-family: 'KIMM_Bold';
+    text-align: center;
+    font-size: 0;
+    line-height: 0;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    border: none;
+    vertical-align: top;
+    display: none;/*이거 없애면 이미지 깨진 화살표 생기는데 어떻게 맞춰야하는지 모르겠음...help*/
+}
+
+
+.pagenumber>ol{
+    font: 0.75em;
+    color: #353535;
+    font-family: 'KIMM_Bold';
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    font-size: 0;
+    line-height: 0;
+    vertical-align: top;
+}
+
+.pagenumber>ol>li{
+    font: 0.75em;
+    font-family: 'KIMM_Bold';
+    line-height: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+    margin: 0 0 0 -1px;
+    font-size: 12px;
+    color: #757575;
+    vertical-align: top;
+    border: 0;
+    margin-left: 0;
+}
+
+
+.contents{
+    font: 0.75em;
+    color: #353535;
+    font-family: 'KIMM_Bold';
+    margin: 0;
+    float: none;
+    width: 100%;
+    padding: 0;
+
+}
+
+
+.product_rating {
+  float: right;
+  width: 100%;
+  height: 20px;
+  overflow: hidden;
+  background: url(https://bit.ly/1B4PjyM) top left no-repeat;
+  background-position: center 76%;
+  margin-bottom: 5px;
+  
+}
+
+
+  
+
+/*여기까지 내가 추가한거*/
+
+
+ul.product_list {
+  display: block;
+  float: left;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.product_grid a {
+  text-decoration: none;
+}
+.product_item {
+  display: inline-block;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  position: relative;
+  border-radius: 15px;
+}
+
+.product_image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.product_image a {
+  display: block;
+}
+.product_image img {
+  display: block;
+  -webkit-transition: all .35s ease-in-out;
+  -moz-transition: all .35s ease-in-out;
+  transition: all .35s ease-in-out;
+}
+.product_image img:hover {
+  -o-transform: scale(1.2, 1.2);
+  -moz-transform: scale(1.2, 1.2);
+  -webkit-transform: scale(1.2, 1.2);
+  -ms-transform: scale(1.2, 1.2);
+  transform: scale(1.2, 1.2);
+}
+.product_image:hover .product_buttons {
+  bottom: 0;
+}
+.product_buttons {
+  position: absolute;
+  bottom: -40%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  -webkit-transition: all .35s ease;
+  -moz-transition: all .35s ease;
+  transition: all .35s ease;
+}
+.product_buttons button {
+  color: #fff;
+  border: none;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 1em;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+.product_buttons .product_heart:hover {
+  color: white;
+  background: red;
+}
+
+.product_title {
+  float: left;
+  width: 100%;
+  text-transform: uppercase;
+}
+
+.goods_title {
+  color: black;
+}
+
+.goods_title:hover {
+  color: #ea2e49;
+}
+
+.product_price a {
+  color: #000;
+}
+.price_old {
+  color: #ea2e49;
+  text-decoration: line-through;
+}
+
+.price_new {
+  color: black;
+}
+
+.price_new:hover {
+  color: #ea2e49;
+}
+
+
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */ 
+@media only screen and (min-width : 320px) {
+  ul.product_list {
+    margin: 0;
+  }
+  .product_item {
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+  .product_sale {
+    position: absolute;
+    z-index: 99;
+    right: -28px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  .product_sale p {
+    margin: 0;
+    color: #fff;
+    background: #ff0000;
+    padding: 3px 25px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.4);
+  }
+  .product_image {
+    height: 150px;
+    float: left;
+    width: 100px;
+  }
+  .product_image .product_buttons {
+    display: none;
+  }
+  .product_title h5 {
+    margin: auto;
+    font-size: 1em;
+    font-weight: 500;
+    line-height: 1;
+  }
+  .product_price span {
+    font-size: 1.1em;
+    line-height: 1;
+  }
+
+  .product_values .product_buttons {
+    position: relative;
+    text-align: left;
+    float: left;
+    margin-top: 7px;
+  }
+  .product_values .product_buttons button {
+    color: #252525;
+    background: rgba(255, 255, 255, 1);
+    font-size: 1em;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #000;
+  }
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+  ul.product_list {
+    margin: 1%;
+  }
+  .product_item {
+    width: 49%;
+    margin: 0;
+  }
+  .product_image {
+    height: 300px;
+    float: left;
+    width: 100%;
+    text-align: center;
+  }
+  .product_image img {
+    max-height: 100%;
+    display: inline-block;
+  }
+  .product_title h5 {
+    font-size: 1.1em;
+    font-weight: 500;
+    line-height: 1;
+    padding: 10px 0 0;
+    text-align: center;
+}
+  .product_image .product_buttons {
+    display: block;
+  }
+  .product_price {
+    float: left;
+    text-align: center;
+    width: 100%;
+  }
+
+  .product_values .product_buttons {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 678px) {
+  .product_item {
+    width: 32.5%;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+  .product_item {
+    width: 24.25%;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+  .product_item {
+    width: 19.5%;
+  }
+}
+
+
+
+/*==========  Non-Mobile First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+  
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 480px) {
+  .product_title h5 {
+    font-weight: bold;
+  }
+ .product_values {
+    float: left;
+    width: calc(100% - 100px);
+    padding: 0 10px;
+  }
+
+  .product_image {
+    height: 150px;
+    float: left;
+    width: 100px;
+  }
+  .product_image .product_buttons {
+    display: none;
+  }
+  .product_values .product_buttons {
+    position: relative;
+    text-align: left;
+    float: left;
+    margin-top: 7px;
+  }
+  .product_values .product_buttons button {
+    color: #252525;
+    background: rgba(255, 255, 255, 1);
+    font-size: 1em;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #000;
+  }  
+}
+
+/* Custom, iPhone Retina */ 
+@media only screen and (max-width : 320px) {
+   .product_sale {
+    display: none;
+  }
+  .product_image {
+    height: auto;
+    width: 100%;
+  }
+  .product_image .product_buttons {
+    display: block;
+  }
+  .product_values {
+    width: 100%;
+    padding: 0;
+    margin: 5px 0;
+  }
+  .product_title h5 {
+    margin: auto;
+    font-size: 1em;
+    line-height: 1;
+    font-weight: bold;
+  }
+  .product_values .product_buttons {
+    display: none;
+  }
+}	
+</style>

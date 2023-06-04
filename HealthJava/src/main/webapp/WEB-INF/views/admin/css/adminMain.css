@@ -1,0 +1,80 @@
+@charset "UTF-8";
+/* adminMain.jsp UI : 관리자 메인화면 */
+/* 메인 틀*/
+.totalMain {
+	width: 1400px;
+	height: 420px;
+	padding-top: 50px;
+	padding-left: 100px;
+	padding-right: 100px;
+	position: relative;
+}
+/* 주문 및 건수 등의 테이블 */
+.kong table {
+	width: 190px;
+	height: 180px;
+	margin: 15px;
+	border-collapse: collapse;
+	border-top: 3px solid #FC5400;
+	font-family: 'KIMM_Bold';
+}
+
+div.kong {
+	margin: 50px;
+	font-family: 'KIMM_Bold';
+	float: left;
+	width: 1200px;
+	height: 200px;
+}
+
+div.kong2 {
+	float: left;
+	min-width: 50px;
+	min-height: 100px;
+}
+
+.kong table th {
+	background: white;
+	text-align: center;
+	color: black;
+}
+
+.kong table th, .kong table td {
+	padding: 10px;
+	border: 1px solid #f5ad56;
+}
+
+.kong table th:first-child, .kong table td:first-child {
+	border-left: 0;
+}
+
+.kong table th:last-child {
+	border-right: 0;
+}
+
+.kong table tr td:first-child {
+	text-align: center;
+}
+
+.kong table caption {
+	caption-side: bottom;
+	display: none;
+}
+/* 매출 그래프 */
+.chart {
+	width: 1300px;
+	height: 700px;
+	margin: 50px 50px;
+	font-family: 'KIMM_Bold';
+	position: relative;
+}
+
+.totalchart {
+	font-family: 'KIMM_Bold';
+}
+
+#container {
+	width: 1300px;
+	height: 600px;
+	font-family: 'KIMM_Bold';
+}

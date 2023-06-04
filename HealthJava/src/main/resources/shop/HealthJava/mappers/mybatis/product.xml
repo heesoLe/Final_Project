@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Product">
+
+	<select id="new" resultType="shop.HealthJava.vo.ProductVO"
+	parameterType="shop.HealthJava.vo.ProductVO">
+	SELECT *
+	FROM (
+	SELECT rowNum rNum, product_no, product_cont1, product_title, product_price,
+	product_maker
+	FROM (
+	SELECT *
+	FROM tbl_product
+	<where>
+		<if test="kind != null">
+			(product_type2 = #{kind} OR product_type = #{kind})
+		</if>
+		<if
+			test="f.search_type == 'All' and f.search_field != null and f.search_field != ''">
+			AND (product_title LIKE #{f.search_field} OR product_maker LIKE
+			#{f.search_field})
+		</if>
+		<if
+			test="f.search_type == 'product_title' and f.search_field != null and f.search_field != ''">
+			AND product_title LIKE #{f.search_field}
+		</if>
+		<if
+			test="f.search_type == 'product_maker' and f.search_field != null and f.search_field != ''">
+			AND product_maker LIKE #{f.search_field}
+		</if>
+		<if test="kind2 != null and kind2 == '낮은가격순'">
+			ORDER BY product_price ASC
+		</if>
+		<if test="kind2 != null and kind2 == '높은가격순'">
+			ORDER BY product_price DESC
+		</if>
+	</where>
+	)
+	)
+	WHERE rNum &gt;= #{f.startrow} AND rNum &lt;= #{f.endrow}
+	</select>
+
+	
+	<select id="count" resultType="int" parameterType="shop.HealthJava.vo.ProductVO">
+    SELECT COUNT(*) FROM tbl_product
+	    <where>
+	        <if test="kind != null">
+	            (product_type2 = #{kind} OR product_type = #{kind})
+	        </if>
+	        <if test="f.search_type == 'All' and f.search_field != null and f.search_field != ''">
+	            AND (product_title LIKE #{f.search_field} OR product_maker LIKE #{f.search_field})
+	        </if>
+	        <if test="f.search_type == 'product_title' and f.search_field != null and f.search_field != ''">
+	            AND product_title LIKE #{f.search_field}
+	        </if>
+	        <if test="f.search_type == 'product_maker' and f.search_field != null and f.search_field != ''">
+	            AND product_maker LIKE #{f.search_field}
+	        </if>
+	    </where>
+	</select>
+	
+
+	<select id="product_content" resultType="product">
+    	select * from tbl_product where product_no=#{product_no}
+    </select>
+    
+    
+    <insert id="product_insert" >
+     <!-- parameterType속성은 전달인자 타입.생략가능 -->
+     insert into tbl_product
+    
+    (product_no, product_title, product_price, product_maker, product_type, product_type2, 
+    product_cont1, product_cont2, product_cont3, product_cont4, 
+    product_cont5, product_cont6, product_cont7, product_cont8)
+    
+    values(product_no_seq.nextval,#{product_title}, #{product_price},#{product_maker} ,#{product_type},#{product_type2}, 
+    #{product_cont1}, #{product_cont2}, #{product_cont3}, #{product_cont4}, 
+    #{product_cont5}, #{product_cont6}, #{product_cont7}, #{product_cont8})
+    </insert>
+    
+    <delete id="product_delete">
+    	delete from tbl_product where product_no=#{product_no}
+    </delete>
+
+	<update id="product_update" >
+    	UPDATE tbl_product 
+		SET product_title=#{product_title}, 
+		    product_price=#{product_price}, 
+		    product_maker=#{product_maker}, 
+		    product_type=#{product_type}, 
+		    product_type2=#{product_type2}, 
+		    product_cont1=#{product_cont1}, 
+		    product_cont2=#{product_cont2}, 
+		    product_cont3=#{product_cont3}, 
+		    product_cont4=#{product_cont4}, 
+		    product_cont5=#{product_cont5}, 
+		    product_cont6=#{product_cont6}, 
+		    product_cont7=#{product_cont7}, 
+		    product_cont8=#{product_cont8} 
+		WHERE product_no=#{product_no}
+    </update>
+    
+    <select id="review_list" resultType="shop.HealthJava.vo.ProductQnAVO" >
+    	select * from tbl_product_qna where qna_product_no =#{product_no}
+    </select>
+  
+    
+    <insert id="qna_insert" parameterType="shop.HealthJava.vo.ProductQnAVO">
+    	INSERT INTO tbl_product_qna (qna_no, qna_product_no, qna_mem_id, qna_title, qna_content, qna_reply, qna_date) 
+    VALUES (qna_no_seq.nextval, #{qna_product_no}, #{qna_mem_id}, #{qna_title}, #{qna_content}, ' ' , sysdate)
+    </insert>
+    
+    
+    <insert id="like_insert" parameterType="shop.HealthJava.vo.LikeVO">
+    INSERT INTO  tbl_like ( like_no, like_mem_id,  like_pro_no)  
+    VALUES (like_no_seq.nextval, #{like_mem_id}, #{like_pro_no})
+    
+    </insert>
+    
+    <delete id="like_delete" parameterType="shop.HealthJava.vo.LikeVO">
+    	delete from tbl_like where like_mem_id=#{like_mem_id} and like_pro_no=#{like_pro_no}
+    </delete>
+    
+    
+    
+    <select id="like_list" parameterType="shop.HealthJava.vo.LikeVO" resultType="shop.HealthJava.vo.LikeVO">
+    	select * from tbl_like where like_mem_id=#{like_mem_id} and like_pro_no=#{like_pro_no}
+    </select>
+    
+    <insert id="cart_insert" parameterType="shop.HealthJava.vo.CartVO">
+    INSERT INTO  tbl_cart ( cart_no, cart_mem_id,  cart_pro_no, cart_cnt)  
+    VALUES (cart_no_seq.nextval, #{cart_mem_id}, #{cart_pro_no}, #{cart_cnt})
+    
+    </insert>
+    
+    <insert id="orderDetail_insert" parameterType="shop.HealthJava.vo.OrderDetailVO">
+    INSERT INTO  tbl_order_detail ( order_detail_no,  order_detail_mid,  order_detail_fno, order_detail_pname,order_detail_cnt, order_detail_price)  
+    VALUES (order_detail_no_seq.nextval, #{order_detail_mid}, #{order_detail_fno}, #{order_detail_pname}, #{order_detail_cnt}, #{order_detail_price})
+    </insert>
+    
+</mapper>

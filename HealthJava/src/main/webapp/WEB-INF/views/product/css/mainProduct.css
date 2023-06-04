@@ -1,0 +1,474 @@
+@charset "UTF-8";
+
+
+<style type="text/css">
+	/* 폰트 CSS */
+	@font-face {
+		font-family: 'KIMM_Bold';
+		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2'); /* CDN 절대링크  */
+		font-weight: 700;
+		font-style: normal;
+	}
+	/* 되도록 안건드리는 영역 */
+	* {
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+	}
+	html {
+		height: 100%;
+	}
+	body {
+		margin: 0px;
+		height: 100%;
+		padding: 0px;
+	}
+	header {
+		width: 100%;
+	    position: fixed;
+		z-index: 2;
+	}
+	footer {
+		bottom: 0;
+		z-index: 5;
+		position: relative;
+	}
+	.wrap {
+		margin-top: -110px;
+		min-height: 100%;
+	    position: relative;
+	}
+	.main { 
+		width: 1400px;
+		height: 2000px; /* UI 개발할 때 각 페이지에 맡게 해당 영역 px수치 수정해야함 / section이랑 px 맞춰야함 */
+		position : relative;
+		top: 105px;
+		left: 50%;
+        transform: translateX( -50% );
+		
+	}
+	section {
+		height: 2000px; /* UI 개발할 때 각 페이지에 맡게 해당 영역 px수치 수정해야함 / .main이랑 px 맞춰야함 */
+		
+	}
+	/* 클리어 */
+	.clear {
+		clear: both;
+	}
+	/* 밑의 영역부터 css시작 */
+	.container {
+		width: 100%;
+	}
+	/* 캐러셀 */
+	#carouselExampleControls {
+		width: 1100px;
+		position : relative;
+		left: 50%;
+        transform: translateX( -50% );
+	}
+	
+	
+	/*본문 css 시작*/
+	
+	.product_item{
+	font-family: 'KIMM_Bold';
+	}
+	
+	.product_list list>li{
+	--vh: 8.68px;
+    word-wrap: break-word;
+    word-break: keep-all;
+    color: #000000;
+    line-height: 1.6;
+    -webkit-text-size-adjust: none;
+    letter-spacing: -0.2px;
+    font-family: 'KIMM_Bold';
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    outline: none !important;
+    margin: 0;
+    border: 0;
+    max-height: 1000000px;
+    font-size: 100%;
+    font-weight: normal;
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    position: relative;
+    padding: 0;
+}
+
+.product_list list>li>span{
+    --vh: 8.68px;
+    word-wrap: break-word;
+    word-break: keep-all;
+    -webkit-text-size-adjust: none;
+    font-family: 'KIMM_Bold';
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+    outline: none !important;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    max-height: 1000000px;
+    display: block;
+    line-height: 25px;
+    font-size: 20px;
+    color: #000;
+    font-weight: 700;
+    letter-spacing: -.3px;
+}
+
+.product_list list>li>button{
+    --vh: 8.68px;
+    word-wrap: break-word;
+    word-break: keep-all;
+    -webkit-text-size-adjust: none;
+    box-sizing: border-box;
+    outline: none !important;
+    max-height: 1000000px;
+    letter-spacing: -0.2px;
+    font-family:'KIMM_Bold';
+    vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    background: none;
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 25px;
+    line-height: 25px;
+    font-size: 15px;
+    color: #000;
+    font-weight: bold;
+    padding: 0 20px 0 5px;
+}
+.product_rating {
+  float: right;
+  width: 100px;
+  height: 20px;
+  overflow: hidden;
+  background: url(https://bit.ly/1B4PjyM) top left no-repeat;
+  background-position: 0 76%;
+}	
+	
+	
+ul.product_list {
+  display: block;
+  float: left;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.product_grid a {
+  text-decoration: none;
+}
+.product_item {
+  display: inline-block;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  position: relative;
+  border-radius: 15px;
+}
+
+.product_image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.product_image a {
+  display: block;
+}
+.product_image img {
+  display: block;
+  -webkit-transition: all .35s ease-in-out;
+  -moz-transition: all .35s ease-in-out;
+  transition: all .35s ease-in-out;
+}
+.product_image img:hover {
+  -o-transform: scale(1.2, 1.2);
+  -moz-transform: scale(1.2, 1.2);
+  -webkit-transform: scale(1.2, 1.2);
+  -ms-transform: scale(1.2, 1.2);
+  transform: scale(1.2, 1.2);
+}
+.product_image:hover .product_buttons {
+  bottom: 0;
+}
+.product_buttons {
+  position: absolute;
+  bottom: -40%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  -webkit-transition: all .35s ease;
+  -moz-transition: all .35s ease;
+  transition: all .35s ease;
+}
+.product_buttons button {
+  color: #fff;
+  border: none;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 1em;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+.product_buttons .product_heart:hover {
+  color: white;
+  background: red;
+}
+
+.product_title {
+  float: left;
+  width: 100%;
+  text-transform: uppercase;
+}
+
+.goods_title {
+  color: black;
+}
+
+.goods_title:hover {
+  color: #ea2e49;
+}
+
+.product_price a {
+  color: #000;
+}
+.price_old {
+  color: #ea2e49;
+  text-decoration: line-through;
+}
+
+.price_new {
+  color: black;
+}
+
+.price_new:hover {
+  color: #ea2e49;
+}
+
+
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */ 
+@media only screen and (min-width : 320px) {
+  ul.product_list {
+    margin: 0;
+  }
+  .product_item {
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+  .product_sale {
+    position: absolute;
+    z-index: 99;
+    right: -28px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  .product_sale p {
+    margin: 0;
+    color: #fff;
+    background: #ff0000;
+    padding: 3px 25px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.4);
+  }
+  .product_image {
+    height: 150px;
+    float: left;
+    width: 100px;
+  }
+  .product_image .product_buttons {
+    display: none;
+  }
+  .product_title h5 {
+    margin: auto;
+    font-size: 1em;
+    font-weight: 500;
+    line-height: 1;
+  }
+  .product_price span {
+    font-size: 1.1em;
+    line-height: 1;
+  }
+
+  .product_values .product_buttons {
+    position: relative;
+    text-align: left;
+    float: left;
+    margin-top: 7px;
+  }
+  .product_values .product_buttons button {
+    color: #252525;
+    background: rgba(255, 255, 255, 1);
+    font-size: 1em;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #000;
+  }
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+  ul.product_list {
+    margin: 1%;
+  }
+  .product_item {
+    width: 49%;
+    margin: 0;
+  }
+  .product_image {
+    height: 300px;
+    float: left;
+    width: 100%;
+    text-align: center;
+  }
+  .product_image img {
+    max-height: 100%;
+    display: inline-block;
+  }
+  .product_title h5 {
+    font-size: 1.1em;
+    font-weight: 500;
+    line-height: 1;
+    padding: 10px 0 0;
+    text-align: center;
+}
+  .product_image .product_buttons {
+    display: block;
+  }
+  .product_price {
+    float: left;
+    text-align: center;
+    width: 100%;
+  }
+  
+  
+  .product_rating {
+    width: 100%;
+    background-position: center 76%;
+    margin-bottom: 5px;
+  }
+  
+  
+  .product_values .product_buttons {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 678px) {
+  .product_item {
+    width: 32.5%;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+  .product_item {
+    width: 24.25%;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+  .product_item {
+    width: 19.5%;
+  }
+}
+
+
+
+/*==========  Non-Mobile First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+  
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 480px) {
+  .product_title h5 {
+    font-weight: bold;
+  }
+ .product_values {
+    float: left;
+    width: calc(100% - 100px);
+    padding: 0 10px;
+  }
+
+  .product_image {
+    height: 150px;
+    float: left;
+    width: 100px;
+  }
+  .product_image .product_buttons {
+    display: none;
+  }
+  .product_values .product_buttons {
+    position: relative;
+    text-align: left;
+    float: left;
+    margin-top: 7px;
+  }
+  .product_values .product_buttons button {
+    color: #252525;
+    background: rgba(255, 255, 255, 1);
+    font-size: 1em;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #000;
+  }  
+}
+
+/* Custom, iPhone Retina */ 
+@media only screen and (max-width : 320px) {
+   .product_sale {
+    display: none;
+  }
+  .product_image {
+    height: auto;
+    width: 100%;
+  }
+  .product_image .product_buttons {
+    display: block;
+  }
+  .product_values {
+    width: 100%;
+    padding: 0;
+    margin: 5px 0;
+  }
+  .product_title h5 {
+    margin: auto;
+    font-size: 1em;
+    line-height: 1;
+    font-weight: bold;
+  }
+  .product_values .product_buttons {
+    display: none;
+  }
+}	
+</style>

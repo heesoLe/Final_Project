@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+/* 상품 등록 전체 폼*/
+.productTitle {
+	width: 1400px;
+	height: 180px;
+	padding-top: 100px;
+	padding-left: 50px;
+	padding-right: 100px;
+	font-family: 'KIMM_Bold';
+}
+
+.productForm {
+	font-family: 'KIMM_Bold';
+	width: 1300px;
+	height: 1100px;
+	border: none;
+	border-top: 5px solid #FC5400;
+	border-bottom: 5px solid #FC5400;
+}
+
+.table_div table {
+	border-collapse: collapse;
+}
+
+.table_div table th, td {
+	text-align: centen;
+	font-family: 'KIMM_Bold';
+	border-bottom: 1px solid black;
+}
+
+.input {
+	font-family: 'KIMM_Bold';
+}

@@ -1,0 +1,40 @@
+@charset "UTF-8";
+/* adminMemList.jsp UI : 회원 관리 */
+/* 회원관리 게시판 전체 틀 */
+.list {
+	width: 1400px;
+	height: 80px;
+	padding-top: 50px;
+	padding-left: 50px;
+	padding-right: 100px;
+	font-family: 'KIMM_Bold';
+}
+/* 게시판 테두리 : table */
+.memList{
+	width: 1250px;	
+    border-top: 3px solid #FC5400;
+    border-bottom: 3px solid #FC5400;
+    font-family: 'KIMM_Bold';
+}
+.memList tr{
+	padding-top: 10px;
+}
+.memList th {
+	width: 250px;
+}
+.memList td {
+	font-family: 'KIMM_Bold';
+	line-height: 3;
+}
+th.th-list {
+    border-bottom: 2px solid #f5ad56;
+    font-family: 'KIMM_Bold';
+    padding-top: 20px;
+	padding-bottom: 20px;
+}
+.td-infoPs {
+	border-bottom: 2px solid #f5ad56;
+	font-family: 'KIMM_Bold';
+	padding: 10px 120px;
+	text-align: left;
+}

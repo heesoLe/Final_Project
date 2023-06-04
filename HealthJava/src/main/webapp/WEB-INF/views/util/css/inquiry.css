@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+/* inquiry.jsp UI */
+/* 입점/제휴 문의 모달 관련*/
+.wrap {
+	background: #fff;
+}
+.inquiry_titleBox {
+	width: 100%;
+	height: 120px;
+	margin-left: 20px;
+}
+/* 입점/제휴 문의 모달 창 제목 */
+#inquiry_title {
+	font-weight: bolder;
+	font-size: 22px;
+	margin-left: 155px;
+}
+.inquiry_body {
+	font-size: 13px;
+	font-weight: 500;
+	margin-left: 20px;
+}
+.inquiry_dateBox {
+	margin-bottom: 10px;
+}
+#inquiry_date {
+	color: rgb(162, 160, 160);
+}
+.inquiry_downloadBox {
+	width: 505px;
+	height: 50px;
+	border: 1px solid rgb(162, 160, 160);
+	border-radius: 5px;
+	margin-left: 10px;
+}
+.inquiry_downloadBox2 {
+	margin-top: 10px;
+}
+.inquiry_downloadBox3 {
+	position: fixed;
+	top: 82px;
+	left: 88px;
+}
+#inquiry_xlsx {
+	color: black;
+	text-decoration: none;
+}
+#inquiry_xlsx:hover {
+	text-decoration: underline;
+}
+#attachIcon {
+	margin-left: 15px;
+}
+#exampleModalLong {
+	overflow-y: auto;
+}

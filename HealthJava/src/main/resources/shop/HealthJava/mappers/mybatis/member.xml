@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Member">
+
+	<!-- 회원저장 -->
+ 	<insert id="m_insert" parameterType="member">
+		INSERT INTO tbl_member
+		(user_no, user_id, user_pwd, user_name, user_birth, user_gender, postCode, roadAddr, detailAddr, 
+		user_email, user_phone, user_state, join_date)
+		VALUES 
+		(user_no_seq.nextval, #{user_id}, #{user_pwd}, #{user_name}, #{user_birth}, #{user_gender}, #{postCode}, #{roadAddr}, #{detailAddr},
+		#{user_email}, #{user_phone}, #{user_state}, sysdate)
+	</insert>
+	
+	<!-- 아이디 중복 검색 -->
+ 	<select id="m_idCheck" resultType="member">
+		SELECT * FROM tbl_member WHERE user_id = #{user_id}
+	</select>
+ 
+ 	<!-- 로그인 인증 처리 : 아이디와 user_state가 2가 아니고 메일인증키를 받았을 경우만 로그인 -->
+	<select id="m_loginCheck" resultType="member">
+		SELECT * FROM tbl_member WHERE
+		user_id = #{user_id} and user_state != 2
+	</select>
+ 
+ 	<!-- id 찾기 : 이름, 핸드폰번호로 찾기 -->
+	<select id="m_findId" parameterType="member" resultType="member">
+		SELECT *
+		FROM tbl_member WHERE user_name = #{user_name} AND user_phone = #{user_phone}
+	</select>
+	
+	
+	<!-- 아이디에 해당하는 회원정보를 보기 -->
+	<select id="m_info" resultType="member">
+		SELECT * FROM tbl_member
+		WHERE user_id = #{user_id}
+	</select>
+	
+	<!-- 회원 정보 수정 : 암호화된 비번, 회원 이름, 우편번호, 주소, 폰번호, 이메일 | 아이디 기준 -->
+	<update id="edit_ok">
+		UPDATE tbl_member SET user_name = #{user_name}, user_birth = #{user_birth},
+		user_gender = #{user_gender}, postCode = #{postCode}, roadAddr = #{roadAddr}, detailAddr = #{detailAddr},
+		user_phone = #{user_phone}, user_email = #{user_email}, user_state = #{user_state}
+		WHERE user_id = #{user_id}
+	</update>
+	
+	<!-- 회원탈퇴 -->
+	<update id="m_del_ok" >
+		UPDATE tbl_member SET del_cont = #{del_cont}, del_date = sysdate, user_email = #{user_email},
+		user_state = 2 WHERE user_id = #{user_id}
+	</update>
+	
+	<!-- 비밀번호 수정 -->
+	<update id="update_pwd" >
+		UPDATE tbl_member SET user_pwd = #{user_pwd} 
+		WHERE user_id = #{user_id}
+	</update>
+	
+	<!-- 회원가입 시 이메일 인증을 위한 랜덤번호 저장 -->
+	<update id="updateMailKey" parameterType="member">
+		update tbl_member set mail_key=#{mail_key} 
+		where user_email=#{user_email} and user_id=#{user_id}
+	</update>
+	
+	<!-- 메일 인증을 하면 mail_auth를 1로 바꿔 로그인 허용 -->
+	<update id="updateMailAuth" parameterType="member">
+		update tbl_member set mail_auth=1 
+		where user_email=#{user_email} and mail_key=#{mail_key}
+	</update>
+    
+    <!-- 이메일로 회원 조회 -->
+	<select id="getMemberByEmail" parameterType="java.util.Map" resultType="shop.HealthJava.vo.MemberVO">
+    	SELECT * FROM tbl_member 
+    	WHERE user_email = #{user_email} AND user_id = #{user_id} AND user_name = #{user_name}
+	</select>
+
+
+    <!-- 카카오 회원이 존재하는지 이메일로 검색 -->
+    <select id="searchEmail" resultType = "int">
+    	select count(user_email) from tbl_member where user_email = #{user_email} and user_state = 3  
+	</select>
+	
+    <!-- 카카오 회원이 존재하는지 이메일로 검색해서 아이디값 가져오기 -->
+    <select id="getIdKakao" resultType = "string">
+    	select user_id from tbl_member where user_email = #{user_email} and user_state = 3  
+	</select>
+	
+	<!-- 이메일 중복 검색 -->
+ 	<select id="emailCheck" resultType="member">
+		SELECT * FROM tbl_member WHERE user_email = #{user_email}
+	</select>
+	
+</mapper>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Mypage">
+
+	<!-- // 주문 내역 list -->
+	<select id="order_list" resultType="order">
+	select * from tbl_order where user_id = #{user_id} order by order_date
+	</select>
+
+	<!-- // 총 주문 건수 -->
+	<select id="order_count" resultType="int">
+		select count(order_no) from tbl_order where user_id=#{user_id}
+	</select>
+	
+	<!-- // 주문 확정 -->
+	<insert id="insertOrder">
+		insert into tbl_order (order_no, order_product_title, order_date, order_cnt, order_invoice ,order_total, user_id)
+		values (#{order_no}, #{order_product_title}, sysdate, #{order_cnt}, ' ' ,#{order_total}, #{user_id})
+	</insert>
+	
+	<!-- // 주문 상세 추가 -->
+	<insert id="insertOrderDetail">
+		insert into tbl_order_detail ( order_detail_no, order_no, order_detail_mid, order_detail_fno, order_detail_cnt)
+		values (order_detail_no_seq.nextval, #{order_no}, #{order_detail_mid}, #{order_detail_fno}, #{order_detail_cnt})
+	</insert>
+	
+	<!-- // 주문상세내역 list -->
+	<select id="orderDetail_list" resultType="orderdetail">
+		SELECT d.order_detail_cnt, p.product_title, p.product_price FROM tbl_order_detail d
+		JOIN tbl_product p ON d.order_detail_fno = p.product_no
+		WHERE order_no= #{order_no}
+	</select>
+	
+	<!-- // 찜목록 -->
+	<select id="likeP_list" resultType="like">
+        <!-- select * from tbl_like -->
+        SELECT l.like_no, p.product_no, p.product_title, p.product_date, p.product_price, p.product_cont1
+        FROM tbl_like l
+        JOIN tbl_product p ON l.like_pro_no = p.product_no
+        where like_mem_id = #{like_mem_id}
+	</select>
+	
+	<!-- // 장바구니 목록 조회 -->
+	<select id="cart_list" resultType="cart" >
+		SELECT c.cart_no, c.cart_mem_id, c.cart_pro_no, c.cart_cnt,
+		p.product_cont1, p.product_title, p.product_price
+		FROM tbl_cart c
+		JOIN tbl_product p ON c.cart_pro_no = p.product_no
+		where c.cart_mem_id= #{cart_mem_id}
+	</select>
+	
+	<!-- //장바구니 삭제 -->
+	<delete id="cart_del">
+		delete from tbl_cart where cart_no=#{cart_no}
+	</delete>
+	
+	<!-- //장바구니 전체삭제 -->
+	<delete id="cart_delall">
+		delete from tbl_cart where cart_mem_id=#{cart_mem_id}
+	</delete>
+
+	<!-- //장바구니 체크박스 선택된 정보 조회 -->
+	<select id="selectCartItem" resultType="cart">
+		SELECT c.cart_no, c.cart_mem_id, c.cart_pro_no, c.cart_cnt, p.product_cont1, p.product_title, p.product_price
+		FROM tbl_cart c
+		JOIN tbl_product p ON c.cart_pro_no = p.product_no 
+		where c.cart_no= #{cart_no}
+	</select>
+		
+	<!-- //장바구니 제품숫자 증가 -->
+	<update id="upCartCnt">
+		update tbl_cart set cart_cnt=cart_cnt+1 where cart_no=#{cart_no} and cart_mem_id=#{cart_mem_id}
+	</update>
+	
+	<select id="getBuyOne" resultType="shop.HealthJava.vo.CartVO">
+	   SELECT c.cart_no, c.cart_mem_id, c.cart_pro_no, c.cart_cnt, p.product_cont1, p.product_title, p.product_price
+		FROM tbl_cart c	
+		JOIN tbl_product p ON c.cart_pro_no = p.product_no 
+		where c.cart_no= (select max(cart_no) from tbl_cart) and cart_mem_id=#{c.cart_mem_id}
+    </select>
+			
+	<!-- // 배송지 리스트 조회 -->
+	<select id="memAddr_list" resultType="member">
+		select * from tbl_member where user_id = #{user_id}
+	</select>
+	
+	<!-- //배송지 추가 -->
+	<insert id="addr_in" >
+		insert into tbl_addr (addr_no,user_id,postCode, roadAddr, detailAddr,addr_name) 
+		values (addr_no_seq.nextval, #{user_id}, #{postCode}, #{roadAddr},#{detailAddr}, #{addr_name})
+	</insert>
+	
+	<!-- //배송지 추가 리스트 조회 -->
+	<select id="addr_list" resultType="addr">
+		select * from tbl_addr where user_id = #{user_id}
+	</select>
+		
+	<!-- //추가배송지 수정조회 -->
+	<select id="selectOneAddr" resultType="addr">
+		select * from tbl_addr where addr_no=#{addr_no}
+	</select>
+	
+	<!-- //추가배송지 수정 -->
+	<update id="updateAddr">
+		update tbl_addr set addr_name=#{addr_name}, postCode=#{postCode},
+		 roadAddr=#{roadAddr}, detailAddr=#{detailAddr} where addr_no=#{addr_no}
+	</update>
+	
+	<!-- //추가 배송지 삭제 -->
+	<delete id="deleteAddr">
+		delete from tbl_addr where addr_no=#{addr_no}
+	</delete>
+		
+	<!-- // 리뷰 조회 -->
+	<select id="reviewList" resultType="java.util.Map">
+		SELECT
+		    p.product_title,
+		    p.product_cont1,
+		    p.product_no,
+		    o.order_date,
+		    o.order_product_title,
+		    r.re_mem_id,
+		    r.re_title,
+		    r.re_content,
+		    r.re_image1,
+		    r.re_image2,
+		    r.re_image3,
+		    r.re_date
+		FROM
+		    tbl_product p
+		    LEFT JOIN tbl_order o ON o.order_product_title = p.product_title
+		    LEFT JOIN tbl_reviews r ON r.re_pro_no = p.product_no
+		WHERE r.re_mem_id=#{re_mem_id}
+	</select>
+
+	<!-- // 후기 작성 -->
+	<insert id="insertReview">
+		insert into tbl_reviews
+		(re_no, re_pro_no, re_mem_id, re_title, re_content, re_image1, re_image2, re_image3, re_score, re_date)
+		values (re_no_seq.nextval, #{re_pro_no}, #{re_mem_id}, #{re_title}, #{re_content}, #{re_image1}, #{re_image2}, #{re_image3}, #{re_score}, sysdate)
+	</insert>
+	
+	<!-- //찜목록 삭제 -->
+	<delete id="likeDel">
+		delete from tbl_like where like_no=#{like_no}
+	</delete>
+	
+	
+</mapper>
+

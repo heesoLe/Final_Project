@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+  <configuration>
+  	<typeAliases>
+  	<!-- 이 파일의 역할은 데이터 저장빈 클래스 객체 별칭을 관리함으로써 mybatis 매퍼태그 속성에 들어가는 코드를 줄일 수 있다. -->
+  	
+  	<!-- admin -->
+  	<typeAlias type="shop.HealthJava.vo.MemberVO" alias="member" />
+  	<typeAlias type="shop.HealthJava.vo.ProductVO" alias="product" />
+  	<!-- <typeAlias type="shop.HealthJava.vo.ProductVO2" alias="product2" /> -->
+
+	<!-- Mypage : 목차별 순서 -->
+	<!-- <typeAlias type="shop.HealthJava.vo.MypageVO" alias="mypage" /> -->
+	<typeAlias type="shop.HealthJava.vo.PaymentVO" alias="payment" /> <!-- 결제 -->
+	<typeAlias type="shop.HealthJava.vo.OrderVO" alias="order" /> <!-- 주문 -->
+	<typeAlias type="shop.HealthJava.vo.OrderDetailVO" alias="orderdetail" /> <!-- 주문 상세내역 -->
+	<typeAlias type="shop.HealthJava.vo.RefundVO" alias="refund" /> <!-- 교환,환불,반품 -->
+	<typeAlias type="shop.HealthJava.vo.LikeVO" alias="like" /> <!-- 찜 -->
+	<typeAlias type="shop.HealthJava.vo.CartVO" alias="cart" /> <!-- 장바구니 -->
+	<typeAlias type="shop.HealthJava.vo.CouponVO" alias="coupon" /> <!-- 쿠폰 -->
+	<typeAlias type="shop.HealthJava.vo.ReviewsVO" alias="reviews" /> <!-- 후기 -->
+	<typeAlias type="shop.HealthJava.vo.AddrVO" alias="addr" /> <!-- 배송지 -->
+ 
+ 	<!-- CS -->
+  	<typeAlias type="shop.HealthJava.vo.CSNoticeVO"  alias="csNotice" />
+  	<typeAlias type="shop.HealthJava.vo.CSFAQVO" alias="csFAQ" />  	
+  	<typeAlias type="shop.HealthJava.vo.CSClientVO" alias="csClient" />
+  	
+  	
+  	</typeAliases>
+  </configuration>

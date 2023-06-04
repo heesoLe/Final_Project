@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/* adminMemBoard.jsp UI : 고객게시판 */
+/* 문의 게시판 전체 틀 */
+.board {
+	width: 1400px;
+	height: 80px;
+	padding-top: 50px;
+	padding-left: 50px;
+	padding-right: 100px;
+	font-family: 'KIMM_Bold';
+}
+/* 게시판 테두리 */
+.boardMember {
+	border: none;
+	border-top: 2px solid #FC5400;
+	border-bottom: 2px solid #FC5400;
+	font-family: 'KIMM_Bold';
+}
+
+.boardMember th {
+	border-bottom: 1px solid #f5ad56;
+}

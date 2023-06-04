@@ -1,0 +1,147 @@
+@charset "UTF-8";
+
+/* 기본  */
+/* 폰트 CSS */
+@font-face {
+	font-family: 'KIMM_Bold';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KIMM_Bold.woff2') format('woff2'); /* CDN 절대링크  */
+	font-weight: 700;
+	font-style: normal;
+}
+/* 되도록 안건드리는 영역 */
+* {
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+html {
+	height: 100%;
+}
+body {
+	margin: 0px;
+	height: 100%;
+	padding: 0px;
+}
+header {
+	width: 100%;
+    position: fixed;
+	z-index: 2;
+}
+footer {
+	bottom: 0;
+	z-index: 5;
+	position: relative;
+}
+.wrap {
+	margin-top: -110px;
+	min-height: 100%;
+    position: relative;
+}
+.main { 
+	width: 1400px;
+	height: 2000px; /* UI 개발할 때 각 페이지에 맡게 해당 영역 px수치 수정해야함 */
+	position : relative;
+	top: 105px;
+	left: 50%;
+       transform: translateX( -50% );
+	background-color: white;  /* 영역 보기 편하라고 배경색 지정함 : 하얀색 */
+}
+section {
+	height: 2000px; /* UI 개발할 때 각 페이지에 맡게 해당 영역 px수치 수정해야함 */
+	/* background-color: rgb(236, 226, 202);  영역 보기 편하라고 배경색 지정함 : 연주황 */
+}
+/* 클리어 */
+.clear {
+	clear: both;
+}
+/* 밑의 영역부터 css시작 */
+.container {
+	width: 100%;
+}
+/* 페이징 처리 */
+/* 페이징 전체 틀 */
+.pagination-container {
+	margin: 10px auto;
+	display: flex;
+    justify-content: center;
+}
+
+.pagination {
+	position: relative;
+}
+/* 'PREV' 전체 틀 */
+.pagination a {
+	position: relative;
+	display: inline-block;
+	color: #FC5400; /* 글자색상 */
+	text-decoration: none;
+	font-size: 1.2rem;
+	padding: 8px 16px 10px;
+}
+/* 'PREV' 부분 */
+.pagination a:before {
+	z-index: -1;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	content: "";
+	top: 0;
+	left: 0;
+	background-color: #FC5400;
+	border-radius: 24px;
+	-webkit-transform: scale(0);
+	transform: scale(0);
+	transition: all 0.2s;
+}
+
+.pagination a:hover, .pagination a .pagination-active {
+	color: #fff;
+}
+
+.pagination a:hover:before, .pagination a .pagination-active:before {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+
+.pagination .pagination-active {
+	color: #fff;
+}
+
+.pagination .pagination-active:before {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+/*'NEXT' 전체 틀 */
+.pagination-newer {
+	margin-right: 50px;
+}
+
+.pagination-older {
+	margin-left: 50px;
+}
+/* adminMemBoard.jsp UI : 고객게시판 */
+/* 문의 게시판 전체 틀 */
+.board {
+	width: 1400px;
+	height: 80px;
+	padding-top: 50px;
+	padding-left: 50px;
+	padding-right: 100px;
+	font-family: 'KIMM_Bold';
+}
+/* 게시판 테두리 */
+.MemList {
+	border: none;
+	width: 1300px;
+	height: 250px;
+	border-top: 2px solid #FC5400;
+	border-bottom: 2px solid #FC5400;
+	font-family: 'KIMM_Bold';
+}
+
+.MemList th {
+	border-bottom: 1px solid #f5ad56;
+}
+.MemList tr{
+	border-bottom: 1px solid #f5ad56;
+}

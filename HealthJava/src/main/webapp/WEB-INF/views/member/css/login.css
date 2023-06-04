@@ -1,0 +1,299 @@
+@charset "EUC-KR";/* Login form styling */
+.login-form {
+	background-color: #f2f2f2;
+	padding: 20px;
+	width: 450px;
+	margin: 0 auto;
+	margin-top:200px;
+	margin-bottom:100px;
+	text-align:left;
+	border-radius: 5px;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.login-form h1 {
+	text-align: center;
+	margin-top: 0;
+}
+
+.login-form label {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 5px;
+	
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+	width: 410px;
+	padding: 5px;
+	margin-bottom: 20px;
+	border: none;
+	border-radius: 5px;
+	background-color: #fff;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.login-form input[type="checkbox"] {
+	margin-right: 5px;
+}
+
+.login-form button[type="submit"] {
+	background-color: #FC5400;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	
+}
+
+.login_button {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.login_button button {
+	width: 410px;
+	display: inline-block;
+	background-color: #FC5400;
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 5px;
+	text-decoration: none;
+	margin-right: 10px;
+}
+
+
+.forgot-password,
+.forgot-username {
+	margin-top: 10px;
+	text-align: right;
+}
+
+.forgot-password a,
+.forgot-username a {
+	color: #999;
+	text-decoration: none;
+	font-size: 12px;
+}
+
+.social-login {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.social-login p {
+	margin-bottom: 10px;
+}
+
+.social-login a {
+	display: inline-block;
+	background-color: #FC5400;
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 5px;
+	text-decoration: none;
+	margin-right: 10px;
+}
+
+.signup {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.signup a {
+	color: #FC5400;
+	text-decoration: none;
+}
+
+/* Google web font CDN*/
+
+
+.signup-form {
+	background-color: #f2f2f2;
+	padding: 20px;
+	width: 450px;
+	margin: 0 auto;
+	margin-top:200px;
+	margin-bottom:100px;
+	text-align:left;
+	border-radius: 5px;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.-form label {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 5px;
+	
+}
+
+
+.field select {
+	
+	width: 190px;
+	padding: 5px;
+	margin-bottom: 20px;
+	border: none;
+	border-radius: 5px;
+	background-color: #fff;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+	border: 1px solid #dadada;
+   
+    margin-bottom: 5px;
+}
+
+.signup-form input[type="email"] {
+	width: 190px;
+	padding: 5px;
+	margin-bottom: 20px;
+	border: none;
+	border-radius: 5px;
+	background-color: #fff;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+	border: 1px solid #dadada;
+   
+    margin-bottom: 5px;
+}
+
+.signup-form input[type="text"],
+.signup-form input[type="password"],
+.signup-form input[type="tel"],
+.signup-form input[type="number"]
+ {
+	width: 410px;
+	padding: 5px;
+	margin-bottom: 20px;
+	border: none;
+	border-radius: 5px;
+	background-color: #fff;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+	border: 1px solid #dadada;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.signup-form input[type="button"],
+.signup-form input[type="submit"] {
+	background-color: #FC5400;
+	color: #fff;
+	border: none;
+	padding: 5px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	border: 1px solid #dadada;
+    
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+*{
+    box-sizing: border-box; /*전체에 박스사이징*/
+    outline: none; /*focus 했을때 테두리 나오게 */
+}
+
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size:10px;
+    background-color: #f5f6f7;
+    line-height: 1.5em;
+    color : #222;
+    margin: 0;
+}
+
+a{
+    text-decoration: none;
+    color: #222;
+}
+
+/*member sign in*/
+
+.member h1{
+	text-align: center;
+	
+}
+
+
+.member .logo{
+    /*로고는 이미지라 인라인 블록이니까 마진 오토 안됨 블록요소만 됨 */
+    display: block;
+    margin :50px auto;
+}
+
+.member .field{
+    margin :5px 0; /*상하로 좀 띄워주기*/
+}
+
+.member b{
+    /* border: 1px solid #000; */
+    display: block; /*수직 정렬하기 */
+    margin-bottom: 5px;
+}
+
+/*input 중 radio 는 width 가 100%면 안되니까 */
+
+
+
+
+.member input[type=button],
+.member input[type=submit]{
+background-color: #FC5400;
+color:#fff
+}
+
+.member input:focus, .member select:focus{
+    border: 1px solid #2db400;
+}
+
+.field_id div {
+    display: flex;
+}
+
+.field_id div input:nth-child(1){
+    flex:2;
+}
+
+.field_id div input:nth-child(2){
+    flex:1;
+}
+
+.field.birth div{ /*field 이면서 birth*/
+    display: flex;
+    gap:10px; /*간격 벌려줄때 공식처럼 사용핟나 */
+}
+
+/* .field.birth div > * {  gap 사용한거랑 같은 효과를 줌 
+    flex:1;
+} */
+
+.field.tel-number div {
+    display: flex;
+}
+
+.field.tel-number div input:nth-child(1){
+    flex:2;
+}
+
+.field.tel-number div input:nth-child(2){
+    flex:1;
+}
+
+
+.field.address div {
+    display: flex;
+}
+
+.field.address div input:nth-child(1){
+    flex:2;
+}
+
+.field.address div input:nth-child(2){
+    flex:1;
+}
+
+
+
+
+
+
